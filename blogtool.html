@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="node_modules/medium-editor/dist/css/medium-editor.min.css">
 <title>Blogtool</title>
+<link rel="stylesheet" href="node_modules/medium-editor/dist/css/medium-editor.min.css">
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="./assets/css/blogtool.css">
 </head>
 <body>
-<div class="editor" style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;"></div>
-<script src="./editor.js"></script>
+<div class="columns">
+  <nav class="actions">
+    <div class="button new new-hover js-new"><i class="fa fa-plus"></i> new post</div>
+    <div class="button list list-hover js-list"><i class="fa fa-file-text-o"></i>
+   edit post</div>
+    <div class="button publish publish-hover js-publish"><i class="fa fa-upload"></i>
+   publish</div>
+   <div class="button settings settings-hover js-settings"><i class="fa fa-cog"></i>
+   settings</div>
+  </nav>
+  <section class="js-content content">
+  </section>
+</div>
+<script src="./app.js"></script>
 </body>
 </html>

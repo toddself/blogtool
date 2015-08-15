@@ -1,0 +1,116 @@
+  @font-face {
+    font-family: 'Oswald-Bold';
+    src: url('../oswald/Oswald-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../open-sans/OpenSans-Regular.ttf') format('truetype');
+  }
+
+  body {
+    background-color: #40003F;
+    font-family: verdana, sans-serif;
+    font-height: 12pt;
+    margin: 0;
+    padding: 0;
+    height: 600px;
+  }
+
+  div.columns {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  nav.actions {
+    width: 150px;
+    background-color: #40003F;
+    overflow: hidden;
+  }
+
+  nav.actions div.button {
+    font-family: 'Oswald-Bold', tahoma, sans-serif;
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    padding: 5px;
+    line-height: 25px;
+    font-size: 12pt;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  section.content {
+    flex: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+  }
+
+  .file-list {
+    list-style: none;
+    padding-left: 5px;
+  }
+
+  .file-list .post {
+    cursor: pointer;
+    font-size: 11pt;
+    line-height: 14pt;
+  }
+
+  .list-time {
+    margin-left: 5px;
+    font-style: italic;
+    font-size: 9pt;
+  }
+
+  .editor {
+    flex: 1;
+    background-color: #fff;
+    overflow-y: scroll;
+    padding: 5px;
+  }
+
+  .editor p {
+    -webkit-margin-before: 0em !important;
+  }
+
+  .new {
+    background-color: #3CB200;
+  }
+
+  .new-hover:hover {
+    border-bottom: 5px solid #56FF00;
+  }
+
+  .list {
+    background-color: #CCCA14;
+  }
+
+  .list-hover:hover {
+    border-bottom: 5px solid #FFFC00;
+  }
+
+  .publish {
+    background-color: #7F007E;
+    color: #fff;
+  }
+
+  .publish-hover:hover {
+    border-bottom: 5px solid #FF00FC;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .settings {
+    background-color: #09B29A;
+  }
+
+  .settings-hover:hover {
+    border-bottom: 5px solid #00FFDB;
+  }

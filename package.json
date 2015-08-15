@@ -2,9 +2,12 @@
   "name": "blogtool",
   "version": "1.0.0",
   "description": "A static site generator wrapped in nw.js",
-  "main": "blogtool.html",
+  "main": "main.js",
   "scripts": {
-    "test": "tap test/*spec.js"
+    "test": "tap test/*spec.js",
+    "start": "electron .",
+    "rebuild": "electron-rebuild",
+    "postinstall": "npm run rebuild"
   },
   "repository": {
     "type": "git",
@@ -20,12 +23,6 @@
     "static",
     "website"
   ],
-  "window": {
-    "toolbar": true,
-    "width": 800,
-    "height": 600,
-    "title": "Blogtool"
-  },
   "author": "Todd Kennedy <todd@selfassembled.org>",
   "license": "Apache-2.0",
   "bugs": {
@@ -34,9 +31,16 @@
   "homepage": "https://github.com/toddself/blogtool#readme",
   "dependencies": {
     "dr-sax": "~1.0.12",
+    "electron-rebuild": "~0.2.5",
+    "font-awesome": "~4.4.0",
     "level": "~1.3.0",
     "lodash.throttle": "~3.0.4",
     "marked": "~0.3.5",
-    "medium-editor": "~5.6.2"
+    "medium-editor": "~5.6.2",
+    "moment": "~2.10.6",
+    "xtend": "~4.0.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "~0.30.4"
   }
 }
