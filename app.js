@@ -1,5 +1,7 @@
 'use strict'
 
+var _debounce = require('lodash.debounce')
+
 var conduit = require('./conduit')
 var Editor = require('./editor')
 var PostSelector = require('./post-selector')
@@ -49,10 +51,15 @@ function closeBrowser () {
 }
 
 function main () {
+  document.body.style.height = window.innerHeight + 'px'
   conduit.on('open:editor', openEditor)
   conduit.on('close:editor', closeEditor)
   conduit.on('open:browser', openBrowser)
   conduit.on('close:browser', closeBrowser)
+
+  window.addEventListener('resize', _debounce(function () {
+    document.body.style.height = window.innerHeight + 'px'
+  }, 25, {leading: true, trailing: true}))
 
   newPostEl.addEventListener('click', function () {
     conduit.emit('open:editor', null)

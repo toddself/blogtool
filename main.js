@@ -13,7 +13,7 @@ app.on('will-quit', function () {
 })
 
 app.on('ready', function () {
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 1024, height: 768})
   mainWindow.loadUrl('file://' + __dirname + '/blogtool.html')
 
   mainWindow.openDevTools()

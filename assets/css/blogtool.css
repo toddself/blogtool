@@ -14,7 +14,7 @@
     font-height: 12pt;
     margin: 0;
     padding: 0;
-    height: 600px;
+    height: 768px;
   }
 
   div.columns {
@@ -32,15 +32,14 @@
 
   nav.actions div.button {
     font-family: 'Oswald-Bold', tahoma, sans-serif;
-    width: 100px;
-    height: 100px;
-    margin: 10px auto;
+    width: 150px;
     padding: 5px;
     line-height: 25px;
     font-size: 12pt;
     letter-spacing: 0.1em;
-    box-sizing: border-box;
     cursor: pointer;
+    box-sizing: border-box;
+    height: 75px;
   }
 
   section.content {
@@ -72,6 +71,25 @@
     background-color: #fff;
     overflow-y: scroll;
     padding: 5px;
+    order: 2;
+  }
+
+  .metadata-editor {
+    width: 25%;
+    order: 1;
+    padding: 10px;
+  }
+
+  .metadata-editor input {
+    display: block;
+    width: 100%;
+    line-height: 20pt;
+  }
+
+  .metadata-editor label {
+    display: block;
+    font-weight: bold;
+    line-height: 20pt;
   }
 
   .editor p {

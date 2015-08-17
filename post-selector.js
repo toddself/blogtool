@@ -6,10 +6,10 @@ var conduit = require('./conduit')
 var db = require('./db')
 
 function PostSelector (parent) {
-  this.parent = parent;
+  this.parent = parent
   this.pageSize = 50
   this.lastKey = null
-  this.currPage
+  this.currPage = []
   this.el = document.createElement('ul')
   this.el.classList.add('js-file-list', 'file-list')
 }
@@ -23,8 +23,13 @@ PostSelector.prototype.init = function () {
     self.appendPosts()
     self.parent.appendChild(self.el)
     self.el.addEventListener('click', function (evt) {
-      if (evt.target.classList.contains('js-post') && evt.target.dataset) {
-        conduit.emit('open:editor', evt.target.dataset.postid)
+      var target = evt.target
+      if (evt.target.nodeName === 'TIME') {
+        target = evt.target.parentElement
+      }
+
+      if (target.classList.contains('js-post') && target.dataset) {
+        conduit.emit('open:editor', target.dataset.postid)
       }
     })
   })
@@ -67,6 +72,10 @@ PostSelector.prototype.destroy = function () {
 
 PostSelector.prototype.appendPosts = function () {
   var self = this
+  this.currPage = this.currPage.sort(function (a, b) {
+    return new Date(b.created) - new Date(a.created)
+  })
+
   this.currPage.forEach(function (post) {
     var li
     var createdDate

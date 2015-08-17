@@ -1,7 +1,6 @@
 'use strict'
 
 var crypt = require('crypto')
-var xtend = require('xtend')
 var db = require('./db')
 
 function BlogPost (key) {

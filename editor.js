@@ -3,9 +3,10 @@
 var MediumEditor = require('medium-editor')
 var DrSax = require('dr-sax')
 var marked = require('marked')
-var _throttle = require('lodash.throttle')
+var _debounce = require('lodash.debounce')
 
 var BlogPost = require('./blog-post')
+var MetadataEditor = require('./metadata-editor')
 
 function Editor (postid, parent) {
   console.log('creating new editor with', postid)
@@ -43,10 +44,14 @@ function Editor (postid, parent) {
   this.parent.classList.remove('list')
   this.el = document.createElement('div')
   this.el.classList.add('editor')
-  this.parent.appendChild(this.el
-                          )
+
+  this.metadataEditor = new MetadataEditor(parent)
+  this.metadataEditor.on('change', this.save.bind(this))
+  this.metadataEditor.emit('reset', this.post.toJSON())
+  this.parent.appendChild(this.el)
+
   this.editor = new MediumEditor('.editor', editorOpts)
-  this.editor.subscribe('editableInput', _throttle(function () {
+  this.editor.subscribe('editableInput', _debounce(function () {
     if (self.editor) {
       self.save({body: self.editor.serialize()['element-0'].value})
     }
@@ -55,6 +60,7 @@ function Editor (postid, parent) {
 
 Editor.prototype.save = function (postData) {
   postData = postData || {}
+  console.log('saving data with', postData)
   var self = this
   Object.keys(postData).forEach(function (key) {
     if (key === 'body') {
@@ -75,17 +81,19 @@ Editor.prototype.destroy = function () {
   this.post.save().then(function () {
     self.editor.destroy()
     self.editor = null
+    self.parent.removeChild(self.el)
     while (self.el.hasChildNodes()) {
       self.el.removeChild(self.el.lastChild)
     }
-    self.parent.removeChild(self.el)
+    self.metadataEditor.destroy()
   })
 }
 
 Editor.prototype.populateEntry = function () {
   var self = this
   this.load().then(function (content) {
-    console.log('populating with', content.body)
+    console.log('populating with', content)
+    self.metadataEditor.emit('reset', content)
     var html = marked(content.body, {renderer: self.mr})
     self.editor.setContent(html)
   })

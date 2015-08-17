@@ -4,7 +4,7 @@
   "description": "A static site generator wrapped in nw.js",
   "main": "main.js",
   "scripts": {
-    "test": "tap test/*spec.js",
+    "test": "standard && tap test/*spec.js",
     "start": "electron .",
     "rebuild": "electron-rebuild",
     "postinstall": "npm run rebuild"
@@ -34,13 +34,14 @@
     "electron-rebuild": "~0.2.5",
     "font-awesome": "~4.4.0",
     "level": "~1.3.0",
-    "lodash.throttle": "~3.0.4",
+    "lodash.debounce": "~3.1.1",
     "marked": "~0.3.5",
     "medium-editor": "~5.6.2",
     "moment": "~2.10.6",
     "xtend": "~4.0.0"
   },
   "devDependencies": {
-    "electron-prebuilt": "~0.30.4"
+    "electron-prebuilt": "~0.30.4",
+    "standard": "~5.1.0"
   }
 }
