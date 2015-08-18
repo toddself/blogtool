@@ -80,16 +80,24 @@
     padding: 10px;
   }
 
+  input {
+    border: 0;
+    padding-left: 2px;
+    font-family: 'Open Sans';
+  }
+
   .metadata-editor input {
     display: block;
     width: 100%;
     line-height: 20pt;
+    margin-bottom: 20px;
   }
 
   .metadata-editor label {
     display: block;
-    font-weight: bold;
     line-height: 20pt;
+    font-family: 'Open Sans';
+    letter-spacing: 0.1em;
   }
 
   .editor p {

@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "standard && tap test/*spec.js",
-    "start": "electron .",
+    "start": "NODE_ENV=dev electron .",
     "rebuild": "electron-rebuild",
     "postinstall": "npm run rebuild"
   },

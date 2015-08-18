@@ -1,18 +1,18 @@
 'use strict'
 
-var _debounce = require('lodash.debounce')
+const _debounce = require('lodash.debounce')
 
-var conduit = require('./conduit')
-var Editor = require('./editor')
-var PostSelector = require('./post-selector')
+const conduit = require('./conduit')
+const Editor = require('./editor')
+const PostSelector = require('./post-selector')
 
-var newPostEl = document.querySelector('.js-new')
-var showPostsEl = document.querySelector('.js-list')
-var publishEl = document.querySelector('.js-publish')
-var settingsEl = document.querySelector('.js-settings')
-var contentEl = document.querySelector('.js-content')
-var currentEditor
-var currentBrowser
+const newPostEl = document.querySelector('.js-new')
+const showPostsEl = document.querySelector('.js-list')
+const publishEl = document.querySelector('.js-publish')
+const settingsEl = document.querySelector('.js-settings')
+const contentEl = document.querySelector('.js-content')
+let currentEditor
+let currentBrowser
 
 function openEditor (postId) {
   console.log(postId)
@@ -51,14 +51,14 @@ function closeBrowser () {
 }
 
 function main () {
-  document.body.style.height = window.innerHeight + 'px'
+  document.body.style.height = `${window.innerHeight}px`
   conduit.on('open:editor', openEditor)
   conduit.on('close:editor', closeEditor)
   conduit.on('open:browser', openBrowser)
   conduit.on('close:browser', closeBrowser)
 
   window.addEventListener('resize', _debounce(function () {
-    document.body.style.height = window.innerHeight + 'px'
+    document.body.style.height = `${window.innerHeight}px`
   }, 25, {leading: true, trailing: true}))
 
   newPostEl.addEventListener('click', function () {
